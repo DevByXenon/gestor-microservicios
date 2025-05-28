@@ -4,18 +4,20 @@ package com.xenon.product_service.services;
 import com.xenon.product_service.dto.ProductRequestDTO;
 import com.xenon.product_service.dto.ProductResponseDTO;
 import com.xenon.product_service.model.Product;
-import com.xenon.product_service.repository.ProductRepository;
+import com.xenon.product_service.repository.IProductRepository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService implements IProductService {
 
-    private final ProductRepository productRepository;
+    @Autowired
+    private final IProductRepository productRepository;
 
     @Override
     @Transactional
@@ -24,7 +26,6 @@ public class ProductService implements IProductService {
                 .name(productRequestDTO.getName())
                 .description(productRequestDTO.getDescription())
                 .price(productRequestDTO.getPrice())
-                .stock(productRequestDTO.getStock())
                 .build();
         product = productRepository.save(product);
         return mapToProductResponseDTO(product);
@@ -54,7 +55,6 @@ public class ProductService implements IProductService {
         product.setName(productRequestDTO.getName());
         product.setDescription(productRequestDTO.getDescription());
         product.setPrice(productRequestDTO.getPrice());
-        product.setStock(productRequestDTO.getStock());
         product = productRepository.save(product);
         return mapToProductResponseDTO(product);
     }
@@ -74,7 +74,6 @@ public class ProductService implements IProductService {
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())
-                .stock(product.getStock())
                 .build();
     }
     
