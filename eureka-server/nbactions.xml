@@ -13,28 +13,8 @@
                 <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs></exec.appArgs>
-                <exec.mainClass>com.xenon.inventory_service.InventoryServiceApplication</exec.mainClass>
+                <exec.mainClass>com.xenon.eureka_server.EurekaServerApplication</exec.mainClass>
                 <exec.executable>java</exec.executable>
-                <Env.DB_URL>jdbc:mysql://localhost:3306/inventory_db?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</Env.DB_URL>
-                <Env.DB_USER_NAME>root</Env.DB_USER_NAME>
-                <Env.DB_PASSWORD>Xenon4470_</Env.DB_PASSWORD>
-                <Env.DB_EUREKA_URL>http://localhost:8761/eureka/</Env.DB_EUREKA_URL>
-            </properties>
-        </action>
-        <action>
-            <actionName>rebuild</actionName>
-            <packagings>
-                <packaging>*</packaging>
-            </packagings>
-            <goals>
-                <goal>clean</goal>
-                <goal>install</goal>
-            </goals>
-            <properties>
-                <Env.DB_URL>jdbc:mysql://localhost:3306/inventory_db?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</Env.DB_URL>
-                <Env.DB_USER_NAME>root</Env.DB_USER_NAME>
-                <Env.DB_PASSWORD>Xenon4470_</Env.DB_PASSWORD>
-                <Env.DB_EUREKA_URL>http://localhost:8761/eureka/</Env.DB_EUREKA_URL>
             </properties>
         </action>
         <action>
@@ -50,7 +30,7 @@
                 <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs></exec.appArgs>
-                <exec.mainClass>com.xenon.inventory_service.InventoryServiceApplication</exec.mainClass>
+                <exec.mainClass>com.xenon.eureka_server.EurekaServerApplication</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
             </properties>
@@ -67,7 +47,7 @@
             <properties>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
-                <exec.mainClass>com.xenon.inventory_service.InventoryServiceApplication</exec.mainClass>
+                <exec.mainClass>com.xenon.eureka_server.EurekaServerApplication</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <exec.appArgs></exec.appArgs>
             </properties>
