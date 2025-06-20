@@ -1,0 +1,18 @@
+# Paso 1: Usar una imagen base oficial de Java 21. 
+# 'slim' es una versión ligera, ideal para producción.
+FROM openjdk:21-jdk-slim
+
+# Paso 2: Argumento para el nombre del archivo JAR.
+# El comodín (*) hace que no tengamos que saber el número de versión exacto.
+ARG JAR_FILE=target/*.jar
+
+# Paso 3: Establecer el directorio de trabajo dentro del contenedor.
+WORKDIR /app
+
+# Paso 4: Copiar el archivo JAR desde la carpeta 'target' de nuestro proyecto 
+# al directorio de trabajo '/app' dentro del contenedor, renombrándolo a 'app.jar'.
+COPY ${JAR_FILE} app.jar
+
+# Paso 5: El comando que se ejecutará cuando el contenedor se inicie.
+# Simplemente ejecuta nuestra aplicación Spring Boot.
+ENTRYPOINT ["java", "-jar", "app.jar"]
